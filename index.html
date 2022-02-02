@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NFT Home</title>
+    <meta name="description" content="NFT Home">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body class="app">
+    <a-scene cursor="rayOrigin: mouse" raycaster="far: 20; objects: .collidable" keyboard-shortcuts="enterVR: false" fixed>
+      <a-assets id="assets">
+        <a-asset-item id="house" src="room.glb"></a-asset-item>
+      </a-assets>
+      <a-entity camera="fov:60" look-controls wasd-controls="acceleration:30" position="0 1.6 0"></a-entity>
+
+      <a-entity environment="
+        ground: canyon;
+        groundTexture: walkernoise;
+        grid: none;
+        groundColor: #C09891;
+        groundColor2: #394032;
+        groundYScale: 20;
+        playArea: 10;
+        dressing: trees;
+        dressingAmount: 10;
+        dressingScale: 1;
+        dressingColor: #829471;
+        skyType: gradient;
+        skyColor: #24b59f;
+        horizonColor: #eff9b7;
+        fog: 0.5;
+      "></a-entity>
+
+      <a-gltf-model src="#house" position="0 0 0" scale="0.1 0.1 0.1"></a-gltf-model>
+    </a-scene>
+
+    <section class="onboarding">
+      <form class="onboarding-account">
+        <button class="onboarding-account__submit" type="button">Sign In With Phantom</button>
+      </form>
+    </section>
+    <script>window.global = {}</script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
