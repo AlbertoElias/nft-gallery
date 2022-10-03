@@ -15,34 +15,38 @@
       <a-assets id="assets">
         <a-asset-item id="house" src="room.glb"></a-asset-item>
       </a-assets>
-      <a-entity camera="fov:60" look-controls wasd-controls="acceleration:30" position="0 1.6 0"></a-entity>
+      <a-entity
+        camera="fov:60"
+        look-controls="pointerLockEnabled:true"
+        wasd-controls="acceleration:30"
+        position="2.5 1.6 1.5"
+      ></a-entity>
 
       <a-entity environment="
-        ground: canyon;
-        groundTexture: walkernoise;
-        grid: none;
-        groundColor: #C09891;
-        groundColor2: #394032;
+        preset: forest;
+        seed: 3;
+        ground: hills;
         groundYScale: 20;
-        playArea: 10;
-        dressing: trees;
-        dressingAmount: 10;
-        dressingScale: 1;
-        dressingColor: #829471;
-        skyType: gradient;
-        skyColor: #24b59f;
-        horizonColor: #eff9b7;
-        fog: 0.5;
+        dressingAmount: 1000;
+        lighting: none;
       "></a-entity>
+      <a-light type="ambient" color="#FFFFFF" intensity="0.2"></a-light>
+      <!-- <a-light type="hemisphere" color="#CEE4F0" ground-color="#937a24" intensity="0.3"></a-light> -->
+      <!-- <a-light type="directional" color="#FFFFFF" intensity="0.6" position="-1.2 0.88 -0.55"></a-light> -->
+      <a-light type="directional" color="#FFFFFF" intensity="1" position="-0.3 0.1 0" target="#model"></a-light>
+      <a-light type="directional"  color="#FFFFFF" intensity="1" position="0.3 0.1 0" target="#model"></a-light>
+      <a-light type="directional"  color="#FFFFFF" intensity="1" position="0 0.1 -0.4" target="#model"></a-light>
+      <a-light type="directional"  color="#FFFFFF" intensity="1" position="0 0.1 0.4" target="#model"></a-light>
 
-      <a-gltf-model src="#house" position="0 0 0" scale="0.1 0.1 0.1"></a-gltf-model>
+      <a-gltf-model id="model" src="#house" position="0 0 -0.6" rotation="0 90 0" scale="0.1 0.1 0.1"></a-gltf-model>
+
+      <a-plane class="onboarding" width="4" height="2" color="#000" position="2.5 1.5 -2.5" material="side: double;">
+        <a-text color="#CCC" position="0 0.8 0" width="4" align="center" value="Welcome to your Solana NFT Gallery!"></a-text>
+        <a-text color="#CCC" position="-1.8 0 0" width="3.8" value="Sign In with your Solana wallet using Phantom to see your NFTs."></a-text>
+        <a-plane class="signInPhantom collidable" color="#FFF" width="1" height="0.2" position="0 -0.8 0.01" text="color: #000; align: center; value: Sign In With Phantom;"></a-plane>
+      </a-plane>
     </a-scene>
-
-    <section class="onboarding">
-      <form class="onboarding-account">
-        <button class="onboarding-account__submit" type="button">Sign In With Phantom</button>
-      </form>
-    </section>
+  
     <script>window.global = {}</script>
     <script type="module" src="/main.js"></script>
   </body>
